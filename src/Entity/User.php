@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -43,6 +45,16 @@ class User
      * @ORM\Column(type="boolean")
      */
     private $is_premium;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Category::class, mappedBy="user_id", orphanRemoval=true)
+     */
+    private $categories;
+
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -105,6 +117,36 @@ class User
     public function setIsPremium(bool $is_premium): self
     {
         $this->is_premium = $is_premium;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+            $category->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        if ($this->categories->removeElement($category)) {
+            // set the owning side to null (unless already changed)
+            if ($category->getUserId() === $this) {
+                $category->setUserId(null);
+            }
+        }
 
         return $this;
     }
