@@ -78,11 +78,6 @@ class Souvenir
     private $place;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $token;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private $created_at;
@@ -236,18 +231,6 @@ class Souvenir
     public function setPlace(string $place): self
     {
         $this->place = $place;
-
-        return $this;
-    }
-
-    public function getToken(): ?string
-    {
-        return $this->token;
-    }
-
-    public function setToken(?string $token): self
-    {
-        $this->token = $token;
 
         return $this;
     }
