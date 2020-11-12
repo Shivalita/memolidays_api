@@ -51,9 +51,15 @@ class User
      */
     private $categories;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Souvenir::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $souvenirs;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->souvenirs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -145,6 +151,36 @@ class User
             // set the owning side to null (unless already changed)
             if ($category->getUserId() === $this) {
                 $category->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Souvenir[]
+     */
+    public function getSouvenirs(): Collection
+    {
+        return $this->souvenirs;
+    }
+
+    public function addSouvenir(Souvenir $souvenir): self
+    {
+        if (!$this->souvenirs->contains($souvenir)) {
+            $this->souvenirs[] = $souvenir;
+            $souvenir->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSouvenir(Souvenir $souvenir): self
+    {
+        if ($this->souvenirs->removeElement($souvenir)) {
+            // set the owning side to null (unless already changed)
+            if ($souvenir->getUser() === $this) {
+                $souvenir->setUser(null);
             }
         }
 

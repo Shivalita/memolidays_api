@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\CategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -34,6 +36,16 @@ class Category
      * @ORM\OneToOne(targetEntity=Pin::class, inversedBy="category", cascade={"persist", "remove"})
      */
     private $pin;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Souvenir::class, mappedBy="categories")
+     */
+    private $souvenirs;
+
+    public function __construct()
+    {
+        $this->souvenirs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -72,6 +84,33 @@ class Category
     public function setPinId(?Pin $pin): self
     {
         $this->pin = $pin;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Souvenir[]
+     */
+    public function getSouvenirs(): Collection
+    {
+        return $this->souvenirs;
+    }
+
+    public function addSouvenir(Souvenir $souvenir): self
+    {
+        if (!$this->souvenirs->contains($souvenir)) {
+            $this->souvenirs[] = $souvenir;
+            $souvenir->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSouvenir(Souvenir $souvenir): self
+    {
+        if ($this->souvenirs->removeElement($souvenir)) {
+            $souvenir->removeCategory($this);
+        }
 
         return $this;
     }
