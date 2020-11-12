@@ -92,9 +92,15 @@ class Souvenir
      */
     private $categories;
 
+    /**
+     * @ORM\OneToMany(targetEntity=File::class, mappedBy="souvenir", orphanRemoval=true)
+     */
+    private $files;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->files = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -278,6 +284,36 @@ class Souvenir
     public function removeCategory(Category $category): self
     {
         $this->categories->removeElement($category);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|File[]
+     */
+    public function getFiles(): Collection
+    {
+        return $this->files;
+    }
+
+    public function addFile(File $file): self
+    {
+        if (!$this->files->contains($file)) {
+            $this->files[] = $file;
+            $file->setSouvenir($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFile(File $file): self
+    {
+        if ($this->files->removeElement($file)) {
+            // set the owning side to null (unless already changed)
+            if ($file->getSouvenir() === $this) {
+                $file->setSouvenir(null);
+            }
+        }
 
         return $this;
     }
