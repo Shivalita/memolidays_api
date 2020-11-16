@@ -34,11 +34,14 @@ class Category
 
     /**
      * @ORM\OneToOne(targetEntity=Pin::class, inversedBy="category", cascade={"persist", "remove"})
-     */
+     * @ORM\Column(type="integer", nullable=true)
+     */ 
     private $pin;
 
     /**
      * @ORM\ManyToMany(targetEntity=Souvenir::class, mappedBy="categories")
+     * @ORM\Column(nullable=true)
+     * 
      */
     private $souvenirs;
 

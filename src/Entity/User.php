@@ -47,19 +47,30 @@ class User
     private $is_premium;
 
     /**
-     * @ORM\OneToMany(targetEntity=Category::class, mappedBy="user_id", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Pin::class, mappedBy="user", orphanRemoval=true)
      */
+    private $pins;
+
+    // public function __construct()
+    // {
+    //     $this->pins = new ArrayCollection();
+    // }
+
+    /**
+    * @ORM\OneToMany(targetEntity=Category::class, mappedBy="user_id", orphanRemoval=true)
+    */
     private $categories;
 
     /**
-     * @ORM\OneToMany(targetEntity=Souvenir::class, mappedBy="user", orphanRemoval=true)
-     */
+    * @ORM\OneToMany(targetEntity=Souvenir::class, mappedBy="user", orphanRemoval=true)
+    */
     private $souvenirs;
 
     public function __construct()
     {
         $this->categories = new ArrayCollection();
         $this->souvenirs = new ArrayCollection();
+        $this->pins = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -129,7 +140,7 @@ class User
 
     /**
      * @return Collection|Category[]
-     */
+    */
     public function getCategories(): Collection
     {
         return $this->categories;
@@ -158,8 +169,8 @@ class User
     }
 
     /**
-     * @return Collection|Souvenir[]
-     */
+      * @return Collection|Souvenir[]
+    */
     public function getSouvenirs(): Collection
     {
         return $this->souvenirs;
@@ -186,4 +197,5 @@ class User
 
         return $this;
     }
+
 }

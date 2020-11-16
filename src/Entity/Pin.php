@@ -34,6 +34,7 @@ class Pin
      */
     private $category;
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -80,4 +81,5 @@ class Pin
 
         return $this;
     }
+
 }

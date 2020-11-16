@@ -7,10 +7,18 @@ use App\Repository\SouvenirRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass=SouvenirRepository::class)
+ * @ApiResource(
+ *      attributes={
+ *          "order"={"created_at":"DESC"}
+ *      },
+ * )
+ * @ApiFilter(SearchFilter::class,
+ *  properties={"user_id": "exact"})
  */
 class Souvenir
 {
@@ -38,7 +46,7 @@ class Souvenir
     private $cover;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $event_date;
 
