@@ -7,10 +7,17 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Annotation\ApiFilter;
+
 
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity("email")
+ * @ApiFilter(SearchFilter::class,
+ *  properties={"email": "exact"})
  */
 class User
 {
@@ -22,7 +29,7 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $google_id;
 
@@ -32,7 +39,7 @@ class User
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $email;
 
@@ -47,22 +54,12 @@ class User
     private $is_premium;
 
     /**
-     * @ORM\OneToMany(targetEntity=Pin::class, mappedBy="user", orphanRemoval=true)
-     */
-    private $pins;
-
-    // public function __construct()
-    // {
-    //     $this->pins = new ArrayCollection();
-    // }
-
-    /**
-    * @ORM\OneToMany(targetEntity=Category::class, mappedBy="user_id", orphanRemoval=true)
+    * @ORM\OneToMany(targetEntity=Category::class, mappedBy="user")
     */
     private $categories;
 
     /**
-    * @ORM\OneToMany(targetEntity=Souvenir::class, mappedBy="user", orphanRemoval=true)
+    * @ORM\OneToMany(targetEntity=Souvenir::class, mappedBy="user")
     */
     private $souvenirs;
 
@@ -70,7 +67,6 @@ class User
     {
         $this->categories = new ArrayCollection();
         $this->souvenirs = new ArrayCollection();
-        $this->pins = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -150,7 +146,7 @@ class User
     {
         if (!$this->categories->contains($category)) {
             $this->categories[] = $category;
-            $category->setUserId($this);
+            $category->setUser($this);
         }
 
         return $this;
@@ -160,8 +156,8 @@ class User
     {
         if ($this->categories->removeElement($category)) {
             // set the owning side to null (unless already changed)
-            if ($category->getUserId() === $this) {
-                $category->setUserId(null);
+            if ($category->getUser() === $this) {
+                $category->setUser(null);
             }
         }
 

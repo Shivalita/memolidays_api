@@ -5,11 +5,15 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\FileRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=FileRepository::class)
- */
+* @ApiFilter(SearchFilter::class,
+*  properties={"souvenir": "exact"})
+*/
 class File
 {
     /**

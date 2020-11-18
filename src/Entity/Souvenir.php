@@ -17,8 +17,10 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *          "order"={"created_at":"DESC"}
  *      },
  * )
- * @ApiFilter(SearchFilter::class,
- *  properties={"user_id": "exact"})
+ * @ApiFilter(SearchFilter::class, properties={
+ *     "user": "exact",
+ *     "categories": "exact"
+ * })
  */
 class Souvenir
 {

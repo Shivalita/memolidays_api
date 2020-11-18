@@ -7,10 +7,14 @@ use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @ApiFilter(SearchFilter::class,
+ *  properties={"user": "exact", "categories": "exact"})
  */
 class Category
 {
@@ -34,13 +38,11 @@ class Category
 
     /**
      * @ORM\OneToOne(targetEntity=Pin::class, inversedBy="category", cascade={"persist", "remove"})
-     * @ORM\Column(type="integer", nullable=true)
      */ 
     private $pin;
 
     /**
      * @ORM\ManyToMany(targetEntity=Souvenir::class, mappedBy="categories")
-     * @ORM\Column(nullable=true)
      * 
      */
     private $souvenirs;
@@ -55,12 +57,12 @@ class Category
         return $this->id;
     }
 
-    public function getUserId(): ?User
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUserId(?User $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
@@ -79,12 +81,12 @@ class Category
         return $this;
     }
 
-    public function getPinId(): ?Pin
+    public function getPin(): ?Pin
     {
         return $this->pin;
     }
 
-    public function setPinId(?Pin $pin): self
+    public function setPin(?Pin $pin): self
     {
         $this->pin = $pin;
 

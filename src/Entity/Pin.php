@@ -30,7 +30,7 @@ class Pin
     private $color;
 
     /**
-     * @ORM\OneToOne(targetEntity=Category::class, mappedBy="pin_id", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Category::class, mappedBy="pin", cascade={"persist", "remove"})
      */
     private $category;
 
@@ -75,8 +75,8 @@ class Pin
 
         // set (or unset) the owning side of the relation if necessary
         $newPin_id = null === $category ? null : $this;
-        if ($category->getPinId() !== $newPin_id) {
-            $category->setPinId($newPin_id);
+        if ($category->getPin() !== $newPin_id) {
+            $category->setPin($newPin_id);
         }
 
         return $this;
