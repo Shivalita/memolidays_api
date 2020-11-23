@@ -14,8 +14,11 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  * @ORM\Entity(repositoryClass=SouvenirRepository::class)
  * @ApiResource(
  *      attributes={
- *          "order"={"created_at":"DESC"}
+ *          "order"={"event_date":"DESC"}
  *      },
+ *      itemOperations={"get", "put", "patch", "delete", "patch"={
+ *              "input_formats"={"json"={"application/merge-patch+json"}}
+ *      }}
  * )
  * @ApiFilter(SearchFilter::class, properties={
  *     "user": "exact",

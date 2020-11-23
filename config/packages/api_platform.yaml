@@ -5,7 +5,12 @@ api_platform:
     show_webby: false
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
+    # formats:
+    #     jsonld:   ['application/ld+json']
+    #     jsonapi:  ['application/vnd.api+json']
+    #     json:     ['application/json']
     patch_formats:
-        json: ['application/merge-patch+json']
+        json:     ['application/merge-patch+json']
+        jsonapi:  ['application/vnd.api+json']
     swagger:
         versions: [3]
