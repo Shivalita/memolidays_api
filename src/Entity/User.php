@@ -10,10 +10,17 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Annotation\ApiFilter;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiProperty;
 
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      attributes={
+ *          "fetchEager": false,
+ *          "normalization_context"={"groups"={"souvenirs"},"enable_max_depth"=true},
+ *      },
+ * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity("email")
  * @ApiFilter(SearchFilter::class,
@@ -60,6 +67,7 @@ class User
 
     /**
     * @ORM\OneToMany(targetEntity=Souvenir::class, mappedBy="user")
+    * @Groups({"souvenirs"})
     */
     private $souvenirs;
 

@@ -7,9 +7,15 @@ use App\Repository\FileRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiProperty;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      attributes={
+
+ *      },
+ * )
  * @ORM\Entity(repositoryClass=FileRepository::class)
 * @ApiFilter(SearchFilter::class,
 *  properties={"souvenir": "exact"})
@@ -20,27 +26,32 @@ class File
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=Souvenir::class, inversedBy="files")
      * @ORM\JoinColumn(nullable=false)
+
      */
     private $souvenir;
 
     /**
      * @ORM\Column(type="string", length=255)
+
      */
     private $path;
 
     /**
      * @ORM\Column(type="string", length=255)
+
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+
      */
     private $token;
 

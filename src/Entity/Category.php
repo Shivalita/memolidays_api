@@ -9,9 +9,14 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiProperty;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      attributes={
+ *      },
+ * )
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
  * @ApiFilter(SearchFilter::class,
  *  properties={"user": "exact", "categories": "exact"})
@@ -22,28 +27,33 @@ class Category
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("toto")
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="categories")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("toto")
      */
     private $user;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("toto")
      */
     private $name;
 
     /**
      * @ORM\OneToOne(targetEntity=Pin::class, inversedBy="category", cascade={"persist", "remove"})
+     * @Groups("toto")
      */ 
     private $pin;
 
     /**
      * @ORM\ManyToMany(targetEntity=Souvenir::class, mappedBy="categories")
-     * 
+     * @Groups("toto")
+     * @ApiProperty(readableLink=false, writableLink=false)
      */
     private $souvenirs;
 
