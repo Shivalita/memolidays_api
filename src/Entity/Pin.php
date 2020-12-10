@@ -5,6 +5,8 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\PinRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiProperty;
 
 /**
  * @ApiResource()
@@ -16,21 +18,26 @@ class Pin
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("category")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("category")
      */
     private $icon;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("category")
      */
     private $color;
 
     /**
      * @ORM\OneToOne(targetEntity=Category::class, mappedBy="pin", cascade={"persist", "remove"})
+     * @Groups({"category"})
+     * @ApiProperty(readableLink=false, writableLink=false)
      */
     private $category;
 
