@@ -9,16 +9,21 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiProperty;
+
 
 /**
  * @ORM\Entity(repositoryClass=SouvenirRepository::class)
  * @ApiResource(
  *      attributes={
- *          "order"={"event_date":"DESC"}
+ *          "order"={"event_date":"DESC"},
+ *          "fetchEager": false,
+ *          "normalization_context"={"groups"={"souvenir"},"enable_max_depth"=true},
  *      },
- *      itemOperations={"get", "put", "patch", "delete", "patch"={
+ *      itemOperations={"get", "put", "delete", "patch"={
  *              "input_formats"={"json"={"application/merge-patch+json"}}
- *      }}
+ *      }},
  * )
  * @ApiFilter(SearchFilter::class, properties={
  *     "user": "exact",
@@ -31,77 +36,94 @@ class Souvenir
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"user", "souvenir"})
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="souvenirs")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"user", "souvenir"})
+     * @ApiProperty(readableLink=false, writableLink=false)
      */
     private $user;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user", "souvenir"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user", "souvenir"})
      */
     private $cover;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups({"user", "souvenir"})
      */
     private $event_date;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user", "souvenir"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user", "souvenir"})
      */
     private $phone;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user", "souvenir"})
      */
     private $comment;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user", "souvenir"})
      */
     private $address;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"user", "souvenir"})
      */
     private $latitude;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"user", "souvenir"})
      */
     private $longitude;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user", "souvenir"})
      */
     private $place;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"user", "souvenir"})
      */
     private $created_at;
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="souvenirs")
+     * @Groups({"user", "souvenir"})
+     * @ApiProperty(readableLink=false, writableLink=false)
      */
     private $categories;
 
     /**
      * @ORM\OneToMany(targetEntity=File::class, mappedBy="souvenir", orphanRemoval=true)
+     * @Groups({"user", "souvenir"})
      */
     private $files;
 

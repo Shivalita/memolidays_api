@@ -10,10 +10,17 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Annotation\ApiFilter;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiProperty;
 
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      attributes={
+ *          "fetchEager": false,
+ *          "normalization_context"={"groups"={"user", "category", "souvenir"},"enable_max_depth"=true},
+ *      },
+ * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity("email")
  * @ApiFilter(SearchFilter::class,
@@ -25,41 +32,49 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"user", "category", "souvenir"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
+     * @Groups({"user", "category", "souvenir"})
      */
     private $google_id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user", "category", "souvenir"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
+     * @Groups({"user", "category", "souvenir"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user", "category", "souvenir"})
      */
     private $avatar;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"user", "category", "souvenir"})
      */
     private $is_premium;
 
     /**
     * @ORM\OneToMany(targetEntity=Category::class, mappedBy="user")
+    * @Groups({"user", "category", "souvenir"})
     */
     private $categories;
 
     /**
     * @ORM\OneToMany(targetEntity=Souvenir::class, mappedBy="user")
+    * @Groups({"user", "category", "souvenir"})
     */
     private $souvenirs;
 
