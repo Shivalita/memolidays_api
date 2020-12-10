@@ -9,9 +9,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Annotation\ApiProperty;
 
 /**
- * @ApiResource(
-
- * )
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=PinRepository::class)
  */
 class Pin
@@ -20,25 +18,26 @@ class Pin
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-
+     * @Groups("category")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-
+     * @Groups("category")
      */
     private $icon;
 
     /**
      * @ORM\Column(type="string", length=255)
-
+     * @Groups("category")
      */
     private $color;
 
     /**
      * @ORM\OneToOne(targetEntity=Category::class, mappedBy="pin", cascade={"persist", "remove"})
-
+     * @Groups({"category"})
+     * @ApiProperty(readableLink=false, writableLink=false)
      */
     private $category;
 

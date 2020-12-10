@@ -11,11 +11,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Annotation\ApiProperty;
 
 /**
- * @ApiResource(
- *      attributes={
-
- *      },
- * )
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=FileRepository::class)
 * @ApiFilter(SearchFilter::class,
 *  properties={"souvenir": "exact"})
@@ -26,32 +22,33 @@ class File
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-
+     * @Groups("souvenir")
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=Souvenir::class, inversedBy="files")
      * @ORM\JoinColumn(nullable=false)
-
+     * @Groups({"souvenir"})
+     * @ApiProperty(readableLink=false, writableLink=false)
      */
     private $souvenir;
 
     /**
      * @ORM\Column(type="string", length=255)
-
+     * @Groups("souvenir")
      */
     private $path;
 
     /**
      * @ORM\Column(type="string", length=255)
-
+     * @Groups("souvenir")
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-
+     * @Groups("souvenir")
      */
     private $token;
 
