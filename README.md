@@ -1,0 +1,1 @@
+Create a .env file at the project's root, and set DATABASE_URL as shown in .env.example file.
