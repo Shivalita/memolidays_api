@@ -36,94 +36,94 @@ class Souvenir
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"user", "souvenir"})
+     * @Groups({"souvenir"})
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="souvenirs")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"user", "souvenir"})
+     * @Groups({"souvenir"})
      * @ApiProperty(readableLink=false, writableLink=false)
      */
     private $user;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user", "souvenir"})
+     * @Groups({"souvenir"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user", "souvenir"})
+     * @Groups({"souvenir"})
      */
     private $cover;
 
     /**
      * @ORM\Column(type="date")
-     * @Groups({"user", "souvenir"})
+     * @Groups({"souvenir"})
      */
     private $event_date;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"user", "souvenir"})
+     * @Groups({"souvenir"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"user", "souvenir"})
+     * @Groups({"souvenir"})
      */
     private $phone;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"user", "souvenir"})
+     * @Groups({"souvenir"})
      */
     private $comment;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user", "souvenir"})
+     * @Groups({"souvenir"})
      */
     private $address;
 
     /**
      * @ORM\Column(type="float")
-     * @Groups({"user", "souvenir"})
+     * @Groups({"souvenir"})
      */
     private $latitude;
 
     /**
      * @ORM\Column(type="float")
-     * @Groups({"user", "souvenir"})
+     * @Groups({"souvenir"})
      */
     private $longitude;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user", "souvenir"})
+     * @Groups({"souvenir"})
      */
     private $place;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups({"user", "souvenir"})
+     * @Groups({"souvenir"})
      */
     private $created_at;
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="souvenirs")
-     * @Groups({"user", "souvenir"})
+     * @Groups({"souvenir"})
      * @ApiProperty(readableLink=false, writableLink=false)
      */
     private $categories;
 
     /**
      * @ORM\OneToMany(targetEntity=File::class, mappedBy="souvenir", orphanRemoval=true)
-     * @Groups({"user", "souvenir"})
+     * @Groups({"souvenir"})
      */
     private $files;
 

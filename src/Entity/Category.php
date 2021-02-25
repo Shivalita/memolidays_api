@@ -29,33 +29,33 @@ class Category
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"user", "category"})
+     * @Groups({"category"})
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="categories")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"user", "category"})
+     * @Groups({"category"})
      * @ApiProperty(readableLink=false, writableLink=false)
      */
     private $user;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user", "category"})
+     * @Groups({"category"})
      */
     private $name;
 
     /**
      * @ORM\OneToOne(targetEntity=Pin::class, inversedBy="category", cascade={"persist", "remove"})
-     * @Groups({"user", "category"})
+     * @Groups({"category"})
      */ 
     private $pin;
 
     /**
      * @ORM\ManyToMany(targetEntity=Souvenir::class, mappedBy="categories")
-     * @Groups({"user", "category"})
+     * @Groups({"category"})
      * @ApiProperty(readableLink=false, writableLink=false)
      */
     private $souvenirs;
