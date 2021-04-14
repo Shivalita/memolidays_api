@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 22 mars 2021 à 09:05
+-- Généré le : mer. 14 avr. 2021 à 21:10
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.13
 
@@ -93,24 +93,23 @@ CREATE TABLE `file` (
 --
 
 INSERT INTO `file` (`id`, `souvenir_id`, `path`, `type`, `token`) VALUES
-(1, 1, 'https://drive.google.com/file/d/1i4f0w7bmel11yGc9R2tkpQaSldZ_n91J', 'jpg', 'none'),
-(2, 1, 'https://drive.google.com/file/d/1NTWTMBJmt97kkl-jUMSWEu5bVX4b13By', 'jpg', 'none'),
-(3, 1, 'https://drive.google.com/file/d/1ZlMyqhTNxJWNpXWqKfujyMtkGs-sIqRi', 'jpg', 'none'),
-(4, 1, 'https://drive.google.com/file/d/1D7oyapp9cfj1SmJJrrIibRFbhfCNzIeF', 'jpg', 'none'),
-(5, 1, 'https://drive.google.com/file/d/1NWm0v0UKyorTmSVbbwD4V80EEwi26I52', 'jpg', 'none'),
-(14, 4, 'https://drive.google.com/file/d/1P5qZZyaXeNRix7Kp9He1BeYGg4sViWQu', 'jpg', 'none'),
-(15, 4, 'https://drive.google.com/file/d/1AgCuIliBrhcFspjP7AHgd8H1Yb8lD-rC', 'jpg', 'none'),
-(19, 4, 'https://drive.google.com/file/d/1wAZI2nuWjQC2S8dSGN8QPGXKgs7olJGP', 'jpg', 'none'),
-(21, 5, 'https://drive.google.com/file/d/15KNqiClv-AZdWP5DtD9s_ep7ZKXvtcRa', 'jpg', 'none'),
-(23, 5, 'https://drive.google.com/file/d/15L3l3Ib3m2wHfi23hoqsPQaK62Z3VZPt', 'jpg', 'none'),
-(24, 5, 'https://drive.google.com/file/d/15K2kQAhEMRVzVxoF0_BJNFRjkCLrOPsz', 'jpg', 'none'),
-(25, 5, 'https://drive.google.com/file/d/15C2lQOiMHePJ6yOSSxGr6HRm8cmIkruQ', 'jpg', 'none'),
-(26, 6, 'https://drive.google.com/file/d/1WmFn9PjzfYune5z8c77beKJfPKXiU0bL', 'jpg', 'none'),
-(27, 6, 'https://drive.google.com/file/d/1av2WlYrDDbcUYcePmIoollLsUYf-gS8X', 'jpg', 'none'),
-(38, 17, 'https://drive.google.com/file/d/139w1JE7Kz7KhaBig72QcDiPrFodHuH2S', 'jpg', 'none'),
-(39, 17, 'https://drive.google.com/file/d/1BkXJmqDPev83nk129zcj-oIOqX67whuF', 'jpg', 'none'),
-(40, 17, 'https://drive.google.com/file/d/1jnUtNVp6n1elF32P9KOA26H3Jau_qWFO', 'jpg', 'none'),
-(41, 17, 'https://drive.google.com/file/d/1ddPv8RsxhvyWhKsnnC6C6T7-205QJhfG', 'jpg', 'none');
+(1, 1, 'https://drive.google.com/file/d/1wg0GJOLdFbkaLVD_9djxZUq0aPNsHGgv', 'jpg', 'none'),
+(2, 1, 'https://drive.google.com/file/d/1wg0GJOLdFbkaLVD_9djxZUq0aPNsHGgv', 'jpg', 'none'),
+(3, 1, 'https://drive.google.com/file/d/1wg0GJOLdFbkaLVD_9djxZUq0aPNsHGgv', 'jpg', 'none'),
+(4, 1, 'https://drive.google.com/file/d/1wg0GJOLdFbkaLVD_9djxZUq0aPNsHGgv', 'jpg', 'none'),
+(5, 1, 'https://drive.google.com/file/d/1wg0GJOLdFbkaLVD_9djxZUq0aPNsHGgv', 'jpg', 'none'),
+(14, 4, 'https://drive.google.com/file/d/1wg0GJOLdFbkaLVD_9djxZUq0aPNsHGgv', 'jpg', 'none'),
+(15, 4, 'https://drive.google.com/file/d/1wg0GJOLdFbkaLVD_9djxZUq0aPNsHGgv', 'jpg', 'none'),
+(19, 4, 'https://drive.google.com/file/d/1wg0GJOLdFbkaLVD_9djxZUq0aPNsHGgv', 'jpg', 'none'),
+(21, 5, 'https://drive.google.com/file/d/1wg0GJOLdFbkaLVD_9djxZUq0aPNsHGgv', 'jpg', 'none'),
+(23, 5, 'https://drive.google.com/file/d/1wg0GJOLdFbkaLVD_9djxZUq0aPNsHGgv', 'jpg', 'none'),
+(24, 5, 'https://drive.google.com/file/d/1wg0GJOLdFbkaLVD_9djxZUq0aPNsHGgv', 'jpg', 'none'),
+(25, 5, 'https://drive.google.com/file/d/1wg0GJOLdFbkaLVD_9djxZUq0aPNsHGgv', 'jpg', 'none'),
+(26, 6, 'https://drive.google.com/file/d/1wg0GJOLdFbkaLVD_9djxZUq0aPNsHGgv', 'jpg', 'none'),
+(27, 6, 'https://drive.google.com/file/d/1wg0GJOLdFbkaLVD_9djxZUq0aPNsHGgv', 'jpg', 'none'),
+(39, 17, 'https://drive.google.com/file/d/1wg0GJOLdFbkaLVD_9djxZUq0aPNsHGgv', 'jpg', 'none'),
+(40, 17, 'https://drive.google.com/file/d/1wg0GJOLdFbkaLVD_9djxZUq0aPNsHGgv', 'jpg', 'none'),
+(41, 17, 'https://drive.google.com/file/d/1wg0GJOLdFbkaLVD_9djxZUq0aPNsHGgv', 'jpg', 'none');
 
 -- --------------------------------------------------------
 
@@ -145,7 +144,7 @@ CREATE TABLE `souvenir` (
   `user_id` int(11) NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cover` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `event_date` date NOT NULL,
+  `event_date` datetime DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `comment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -153,7 +152,7 @@ CREATE TABLE `souvenir` (
   `latitude` double NOT NULL,
   `longitude` double NOT NULL,
   `place` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` datetime NOT NULL
+  `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -161,11 +160,11 @@ CREATE TABLE `souvenir` (
 --
 
 INSERT INTO `souvenir` (`id`, `user_id`, `title`, `cover`, `event_date`, `email`, `phone`, `comment`, `address`, `latitude`, `longitude`, `place`, `created_at`) VALUES
-(1, 13, 'Vacances aux Caraïbes', 'https://drive.google.com/file/d/12bsh-PrRyhhpPAGKO0zOLd-0tyfL27Sh', '2016-10-25', '', '', 'Vacances de rêve !', 'Place des Martyrs-de-la-Liberté 97159 Pointe-à-Pitre', 16.2333, -61.5167, 'Caraïbes', '2020-11-11 15:47:36'),
-(4, 13, 'Disneyland', 'https://drive.google.com/file/d/1qdD_LshP-QXySlFuUO4Gsh5HqjsgGCzh', '2020-05-26', 'contact@disney.com', '08 25 30 02 22', 'Un rêve d\'enfance', 'Boulevard de Parc, 77700 Coupvray, France', 48.8719, 2.776623, 'Paris', '2020-11-13 10:43:44'),
-(5, 13, 'Ruby', 'https://drive.google.com/file/d/15HwKrUkv2UkgNdHkQCfQeKSWHAMpkNjB', '2020-10-01', '', '', 'Minette', '52 rue Cuvier, 42300 Roanne, France', 46.0333, 4.0667, 'Roanne', '2020-11-13 16:31:03'),
-(6, 15, 'Les Alpes', 'https://drive.google.com/file/d/1MlUfvtPaZMOOBvQJcCGfDKR6Uh9oIT67', '2019-06-04', '', '', '', 'L\'Église, 05160 Pontis, France', 44.5038, 6.35765, 'Pontis', '2020-11-12 21:27:55'),
-(17, 13, 'Safari de Peaugres', 'https://drive.google.com/file/d/1cF1NuBgqAjLAXTolaEROT85W83P8t_9a', '2017-06-13', '', '04 75 33 00 32', 'Super safari !', 'D821, 07340 Peaugres', 45.26884, 4.71541, 'Peaugres', '2020-11-18 20:47:36');
+(1, 13, 'Vacances aux Caraïbes', 'https://drive.google.com/file/d/1tzwvblfizjQgsMt5aaouH6KrooyFCB4B', '2016-10-25 00:00:00', '', '', 'Vacances de rêve !', 'Place des Martyrs-de-la-Liberté 97159 Pointe-à-Pitre', 16.2333, -61.5167, 'Caraïbes', '2020-11-11 15:47:36'),
+(4, 13, 'Disneyland', 'https://drive.google.com/file/d/1tzwvblfizjQgsMt5aaouH6KrooyFCB4B', '2020-05-26 00:00:00', 'contact@disney.com', '08 25 30 02 22', 'Un rêve d\'enfance', 'Boulevard de Parc, 77700 Coupvray, France', 48.8719, 2.776623, 'Paris', '2020-11-13 10:43:44'),
+(5, 13, 'Ruby', 'https://drive.google.com/file/d/1tzwvblfizjQgsMt5aaouH6KrooyFCB4B', '2020-10-01 00:00:00', '', '', 'Minette', '52 rue Cuvier, 42300 Roanne, France', 46.0333, 4.0667, 'Roanne', '2020-11-13 16:31:03'),
+(6, 15, 'Les Alpes', 'https://drive.google.com/file/d/1tzwvblfizjQgsMt5aaouH6KrooyFCB4B', '2019-06-04 00:00:00', '', '', '', 'L\'Église, 05160 Pontis, France', 44.5038, 6.35765, 'Pontis', '2020-11-12 21:27:55'),
+(17, 13, 'Safari de Peaugres', 'https://drive.google.com/file/d/1tzwvblfizjQgsMt5aaouH6KrooyFCB4B', '2017-06-13 00:00:00', '', '04 75 33 00 32', 'Super safari !', 'D821, 07340 Peaugres', 45.26884, 4.71541, 'Peaugres', '2020-11-18 20:47:36');
 
 -- --------------------------------------------------------
 
@@ -276,25 +275,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT pour la table `file`
 --
 ALTER TABLE `file`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
 -- AUTO_INCREMENT pour la table `pin`
 --
 ALTER TABLE `pin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `souvenir`
 --
 ALTER TABLE `souvenir`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT pour la table `user`
