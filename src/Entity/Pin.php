@@ -18,25 +18,25 @@ class Pin
      * @ORM\Id
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups("category")
+     * @Groups({"category", "souvenir"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("category")
+     * @Groups({"category", "souvenir"})
      */
     private $icon;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("category")
+     * @Groups({"category", "souvenir"})
      */
     private $color;
 
     /**
      * @ORM\OneToOne(targetEntity=Category::class, mappedBy="pin", cascade={"persist"})
-     * @Groups({"category", "souvenir"})
+     * @Groups({"category"})
 
      */
     private $category;

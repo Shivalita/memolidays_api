@@ -55,7 +55,7 @@ class Category
     /**
      * @ORM\OneToOne(targetEntity=Pin::class, inversedBy="category", cascade={"persist", "remove"})
      * @Groups({"souvenir", "category"})
-     */ 
+     */
     private $pin;
 
     /**
