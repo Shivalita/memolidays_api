@@ -20,7 +20,7 @@ class File
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      * @Groups("souvenir")
      */

@@ -11,13 +11,18 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Annotation\ApiProperty;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
  *      attributes={
  *          "fetchEager": false,
  *          "normalization_context"={"groups"={"category"},"enable_max_depth"=true},
+ *          "denormalization_context"={"groups"={"category"}, "enable_max_depth"=true},
  *      },
+*      itemOperations={"get", "put", "delete", "patch"={
+ *              "input_formats"={"json"={"application/merge-patch+json"}}
+ *      }},
  * )
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
  * @ApiFilter(SearchFilter::class,
@@ -27,38 +32,41 @@ class Category
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"category"})
+     * @Groups({"souvenir", "category"})
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="categories")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"category"})
+     * @Groups({"souvenir", "category"})
      * @ApiProperty(readableLink=false, writableLink=false)
      */
     private $user;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"category"})
+     * @Groups({"souvenir", "category"})
      */
     private $name;
 
     /**
      * @ORM\OneToOne(targetEntity=Pin::class, inversedBy="category", cascade={"persist", "remove"})
-     * @Groups({"category"})
+     * @Groups({"souvenir", "category"})
      */ 
     private $pin;
 
     /**
      * @ORM\ManyToMany(targetEntity=Souvenir::class, mappedBy="categories")
-     * @Groups({"category"})
+     * @ORM\JoinColumn(nullable=false)
+     * @Groups({"souvenir", "category"})
      * @ApiProperty(readableLink=false, writableLink=false)
+     * @Assert\NotNull()
      */
     private $souvenirs;
+
 
     public function __construct()
     {

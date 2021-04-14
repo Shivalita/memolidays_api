@@ -16,7 +16,7 @@ class Pin
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      * @Groups("category")
      */
@@ -35,9 +35,9 @@ class Pin
     private $color;
 
     /**
-     * @ORM\OneToOne(targetEntity=Category::class, mappedBy="pin", cascade={"persist", "remove"})
-     * @Groups({"category"})
-     * @ApiProperty(readableLink=false, writableLink=false)
+     * @ORM\OneToOne(targetEntity=Category::class, mappedBy="pin", cascade={"persist"})
+     * @Groups({"category", "souvenir"})
+
      */
     private $category;
 
