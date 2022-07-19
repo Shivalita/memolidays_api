@@ -36,8 +36,6 @@ class Pin
 
     /**
      * @ORM\OneToOne(targetEntity=Category::class, mappedBy="pin", cascade={"persist"})
-     * @Groups({"category"})
-
      */
     private $category;
 
